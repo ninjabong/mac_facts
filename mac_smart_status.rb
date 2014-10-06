@@ -2,7 +2,8 @@
 Facter.add(:mac_smart_status) do
   confine :kernel => "Darwin"
   setcode do
-    string = Facter::Util::Resolution.exec("/usr/sbin/diskutil info disk0|grep SMART")
+    command = "/usr/sbin/diskutil info " + Facter.value(:sp_boot_volume) + "|grep SMART"
+    string = Facter::Util::Resolution.exec(command)
     string[29..string.length]
   end
 end
