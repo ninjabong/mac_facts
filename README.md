@@ -1,7 +1,7 @@
 custom osx specific [facter](http://puppetlabs.com/facter) facts
 ==========
 
-I use these with Sal, so I find it useful to have a pkg build script like thus:
+I use these with [Sal](https://github.com/grahamgilbert/sal), so I find it useful to have a pkg build script like thus:
 
 ```
 mkdir -p build_root/usr/local/sal/facter
