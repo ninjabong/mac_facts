@@ -1,0 +1,5 @@
+*.pkg
+*.sh
+*.old
+build_root/*
+pkgs/*
