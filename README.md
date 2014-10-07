@@ -11,3 +11,10 @@ sudo chown -R root:wheel build_root/
                   --version 0.1 \
                   --root build_root pkgs/sal_yourco_mac_facts.pkg
 ```
+
+If you're not deploying for Sal, change the first two lines to:
+
+```
+mkdir -p build_root/Library/Ruby/Site/facter
+sudo cp *.rb build_root/Library/Ruby/Site/facter
+```
