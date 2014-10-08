@@ -6,8 +6,13 @@ Facter.add(:mac_ntp_status) do
     unless string == "Network Time: On" then
       output = string[14..string.length]
     else
-      string2 = Facter::Util::Resolution.exec("/usr/sbin/systemsetup -getnetworktimeserver")
-      output = string[14..string.length] + " - " + string2[21..string2.length]
+      Facter.add(:mac_ntp_server) do
+        setcode do
+          string2 = Facter::Util::Resolution.exec("/usr/sbin/systemsetup -getnetworktimeserver")
+          server = string2[21..string2.length]
+        server
+        end
+      end
     end
     output
   end

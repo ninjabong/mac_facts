@@ -22,7 +22,7 @@ Facter.add(:mac_tmutil_days_elapsed) do
       backup_elapsed = elapsed_year * 365 # days
     elsif elapsed_month > 0
       backup_elapsed = elapsed_month * 30 # days
-    elsif elapsed_days > 0
+    elsif elapsed_days >= 0
       backup_elapsed = elapsed_days       # days
     end
    backup_elapsed
