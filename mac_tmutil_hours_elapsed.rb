@@ -1,6 +1,6 @@
-#mac_tmutil_hrs_elapsed.rb
+#mac_tmutil_hours_elapsed.rb
 require 'time'
-Facter.add(:mac_tmutil_hrs_elapsed) do
+Facter.add(:mac_tmutil_hours_elapsed) do
   confine :kernel => "Darwin"
   setcode do
     osver = Facter.value("macosx_productversion_major")
@@ -11,9 +11,9 @@ Facter.add(:mac_tmutil_hrs_elapsed) do
       string = Facter::Util::Resolution.exec("/usr/bin/defaults read /Library/Preferences/com.apple.TimeMachine.plist Destinations | egrep -B 2 ');' | tail -n2 | head -n1")
       output = string[13..-2]
     else
-      output = "not supported"
+      output = "Unsupported OS version"
     end
-    if Time.parse(output) < Time.now
+    if output != "Unsupported OS version"
       t1 = Time.now
       t2 = Time.parse(output)
       output = (((t1.to_i - t2.to_i) / 60) / 60 )
